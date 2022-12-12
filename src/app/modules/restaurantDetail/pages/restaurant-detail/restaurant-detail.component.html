@@ -1,0 +1,73 @@
+<div class="grid">
+  <div class="row">
+    <div class="col">
+      <img src="./../../../../../assets/img/acme-eat-logo.png" id="logoAcmeEat" alt="logoAcmeEat" style="width: 50px;">
+    </div>
+    <div class="col" style="text-align: right;">
+      <button (click)="goToDirectorDetails()" type="button" class="btn btn-elegant">
+        <fa-icon [icon]="faUser"></fa-icon> Direttore
+      </button>
+      <button (click)="goToLogOut()" type="button" class="btn btn-secondary">
+        Logout <fa-icon [icon]="faExit"></fa-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<div style="padding-top: 2em;">
+  <h4>Dettaglio Ristorante</h4>
+  <div class="card">
+    <p-table [value]="listaRistoranti" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '50rem'}">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Codice Ristorante</th>
+          <th>Città</th>
+          <th>Nome</th>
+          <th>Descrizione</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-ristorante>
+        <tr>
+          <td>{{ristorante.codiceRistorante}}</td>
+          <td>{{ristorante.codiceCitta | cittaByCodice}}</td>
+          <td>{{ristorante.nome}}</td>
+          <td>{{ristorante.descrizione}}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage" let-columns>
+        <tr>
+          <td colspan="5">
+            Nessun Ristorante Disponibile
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<div style="padding-top: 2em;" *ngIf="currentMenu">
+    <h4>Dettaglio Menù</h4>
+    <div class="card">
+      <p-table [value]="listaProdottiMenu" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="caption">
+            Codice Menù: {{currentMenu.codiceMenu}}
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Codice Prodotto</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-menuProdotto>
+          <tr>
+            <td>{{menuProdotto}}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage" let-columns>
+          <tr>
+            <td colspan="5">
+              Nessun Ristorante Disponibile
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>

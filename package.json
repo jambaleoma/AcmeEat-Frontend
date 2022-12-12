@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^15.0.0",
+    "@angular/animations": "^15.0.3",
     "@angular/common": "^15.0.0",
     "@angular/compiler": "^15.0.0",
     "@angular/core": "^15.0.0",
@@ -18,6 +18,14 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "@fortawesome/angular-fontawesome": "^0.12.0",
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@ng-bootstrap/ng-bootstrap": "^14.0.0",
+    "@syncfusion/ej2-angular-notifications": "^20.3.56",
+    "@syncfusion/ej2-notifications": "^20.3.56",
+    "primeicons": "^6.0.1",
+    "primeng": "^15.0.0-rc.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

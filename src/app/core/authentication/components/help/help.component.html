@@ -1,0 +1,20 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Recupera la tua Password </h2>
+
+    <!-- Reset Password Form -->
+    <form #myPswform = "ngForm" (ngSubmit)="onSubmit(myPswform)">
+      <input type="text" class="fadeIn second" name="codiceDirettore" placeholder="Codice Direttore" ngModel>
+      <input type="submit" class="fadeIn fourth" value="Recupera Passowrd">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" (click)="goToLogin()">Accedi</a>
+    </div>
+
+  </div>
+</div>
+
+<div id="ej2Toast" #toast></div>

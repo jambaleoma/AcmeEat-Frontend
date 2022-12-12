@@ -1,0 +1,18 @@
+<div class="grid">
+  <div class="row">
+    <div class="col">
+      <img src="./../../../../../assets/img/acme-eat-logo.png" id="logoAcmeEat" alt="logoAcmeEat" style="width: 50px;">
+    </div>
+    <div class="col" style="text-align: right;">
+      <button (click)="goToDirectorDetails()" type="button" class="btn btn-elegant">
+        <fa-icon [icon]="faUser"></fa-icon> Direttore
+      </button>
+      <button (click)="goToLogOut()" type="button" class="btn btn-secondary">
+        Logout <fa-icon [icon]="faExit"></fa-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<ng-container>
+  <app-director-detail [director]="director"></app-director-detail>
+</ng-container>

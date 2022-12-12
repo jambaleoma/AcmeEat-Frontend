@@ -1,0 +1,73 @@
+<div style="text-align:center">
+  <h2 style="padding-bottom: 1em;">
+    Dettaglio Direttore
+  </h2>
+  <div class="grid">
+    <div class="row">
+      <div class="col-md-3 offset-md-3">
+        <img src="./../../../../../assets/img/userIcon.png" alt="userImage" style="width: 250px;">
+      </div>
+      <div class="col-md-3" style="display: flex; flex-direction: column-reverse; justify-content: center;">
+        <p-table [value]="directors" styleClass="p-datatable-gridlines">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Nome</th>
+              <th>Cognome</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-director>
+            <tr>
+              <td>{{director.nome}}</td>
+              <td>{{director.cognome}}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <div class="row" style="justify-content: center; padding-top: 2em;">
+      <button type="button" label="Inserimento nuovo ristorante" (click)="goToAddNewRestaurant()" pButton pRipple
+        icon="pi pi-plus"></button>
+    </div>
+  </div>
+
+  <div style="padding-top: 2em;">
+    <h4>Elenco Ristoranti</h4>
+    <div class="card">
+      <p-table [value]="listaRistoranti" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Codice Ristorante</th>
+            <th>Città</th>
+            <th>Nome</th>
+            <th>Descrizione</th>
+            <th style="width: 5rem">Info</th>
+            <th style="width: 5rem">Elimina</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-ristorante>
+          <tr>
+            <td>{{ristorante.codiceRistorante}}</td>
+            <td>{{ristorante.codiceCitta | cittaByCodice}}</td>
+            <td>{{ristorante.nome}}</td>
+            <td>{{ristorante.descrizione}}</td>
+            <td>
+              <button type="button" (click)="checkInfoRestaurant(ristorante)" pButton pRipple icon="pi pi-search"></button>
+            </td>
+            <td>
+              <button type="button" (click)="deleteRestaurant(ristorante)" pButton pRipple icon="pi pi-trash"></button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage" let-columns>
+          <tr>
+            <td colspan="5">
+              Nessun Ristorante Disponibile
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+<p-toast></p-toast>
+<p-confirmDialog header="Confirmation" icon="pi pi-trash"></p-confirmDialog>

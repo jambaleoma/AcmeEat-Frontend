@@ -1,0 +1,43 @@
+<div class="grid">
+    <div class="row">
+      <div class="col">
+        <img src="./../../../../../assets/img/acme-eat-logo.png" id="logoAcmeEat" alt="logoAcmeEat" style="width: 50px;">
+      </div>
+      <div class="col" style="text-align: right;">
+        <button (click)="goToDirectorDetails()" type="button" class="btn btn-elegant">
+          <fa-icon [icon]="faUser"></fa-icon> Direttore
+        </button>
+        <button (click)="goToLogOut()" type="button" class="btn btn-secondary">
+          Logout <fa-icon [icon]="faExit"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+<div style="display: flex; justify-content: center;">
+    <p-card header="Inserimento nuovo ristorante" subheader="Dettagli Ristorante" [style]="{width: '100%'}" styleClass="p-card-shadow">
+        <ng-template pTemplate="header">
+            <img alt="Card" src="./../../../../../assets/img/newRestaurantCard.jpeg">
+        </ng-template>
+        <ng-container>
+            <form #formNewRestaurant="ngForm">
+                <h5>Nome</h5>
+                <input required style="margin-bottom: 2em;" id="float-input" type="text" pInputText name="nome" ngModel> 
+                <h5>Descrizione</h5>
+                <textarea required style="margin-bottom: 2em;" id="float-input" rows="5" cols="30" name="descrizione" pInputTextarea ngModel></textarea>
+                <h5>Città</h5>
+                <p-dropdown required [options]="listacitta" name="citta" placeholder="Seleziona un Città" optionLabel="nome" [showClear]="true" ngModel></p-dropdown>
+            </form>
+        </ng-container>
+        <ng-template pTemplate="footer">
+            <p-button [disabled]="checkValid()" label="Salva" (click)="addNewRestaurant()" icon="pi pi-check"></p-button>
+            <p-button label="Annulla" (click)="resetNewRestaurantForm()" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+        </ng-template>
+    </p-card>
+</div>
+<p-toast></p-toast>
+<p-dialog header="Successo" [(visible)]="showRestaurantAddedModal" [style]="{width: '50vw'}">
+  <p>Inserimento nuovo Ristorante avvenito con successo</p>
+  <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="goToAddNewRestaurantProducts()" label="Ok" styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-dialog>

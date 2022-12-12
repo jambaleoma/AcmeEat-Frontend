@@ -1,0 +1,27 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="inactive underlineHover" (click)="goToLogin()"> Accedi </h2>
+    <h2 class="active"> Registrati </h2>
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="./../../../../../assets/img/userIcon.png" id="icon" alt="User Icon" style="width: 200px;"/>
+    </div>
+
+    <!-- Login Form -->
+    <form #myform = "ngForm" (ngSubmit)="onSubmit(myform)">
+      <input type="text" class="fadeIn second" name="username" placeholder="Username" ngModel>
+      <input type="text" class="fadeIn second" name="email" placeholder="Email" ngModel>
+      <input type="text" class="fadeIn third" name="password" placeholder="Password" ngModel>
+      <input type="text" class="fadeIn third" name="password2" placeholder="Conferma Password" ngModel>
+      <input type="submit" class="fadeIn fourth" value="Registrami">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" (click)="goToHelp()">Password dimenticata?</a>
+    </div>
+
+  </div>
+</div>

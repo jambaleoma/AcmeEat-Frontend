@@ -40,6 +40,7 @@
             <th>Città</th>
             <th>Nome</th>
             <th>Descrizione</th>
+            <th>Stato</th>
             <th style="width: 5rem">Info</th>
             <th style="width: 5rem">Elimina</th>
           </tr>
@@ -50,17 +51,18 @@
             <td>{{ristorante.codiceCitta | cittaByCodice}}</td>
             <td>{{ristorante.nome}}</td>
             <td>{{ristorante.descrizione}}</td>
+            <td><span [class]="'customer-badge status-' + ristorante.stato">{{ristorante.stato}}</span></td>
             <td>
               <button type="button" (click)="checkInfoRestaurant(ristorante)" pButton pRipple icon="pi pi-search"></button>
             </td>
             <td>
-              <button type="button" (click)="deleteRestaurant(ristorante)" pButton pRipple icon="pi pi-trash"></button>
+              <button *ngIf="ristorante.stato === 'bozza'" type="button" (click)="deleteRestaurant(ristorante)" pButton pRipple icon="pi pi-trash"></button>
             </td>
           </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage" let-columns>
           <tr>
-            <td colspan="5">
+            <td colspan="6" style="text-align: center;">
               Nessun Ristorante Disponibile
             </td>
           </tr>

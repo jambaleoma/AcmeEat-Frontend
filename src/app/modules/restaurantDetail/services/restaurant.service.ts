@@ -11,9 +11,13 @@ import { Product } from '../../../shared/models/Product.model';
 export class RestaurantService {
 
   private myAppUrlRistorante = environment.myAppUrl + '/ristorante';
+  private myAppUrlPortale = environment.myAppUrl + '/portaleAcmeEat';
   private restaurantByDirectorCode = '/getRistorantiByCodiceDirettore';
   private insertRestaurant = '/insertRistorante';
   private deleteRestaurantByCodice = '/deleteRistoranteByCodice';
+  private confirmRestaurant = '/confermaInserimentoRistorante';
+  private deactiveRestaurant = '/disattivaRistorante';
+  private activeRestaurant = '/attivaRistorante';
 
   constructor(private http: HttpClient) {}
 
@@ -27,6 +31,14 @@ export class RestaurantService {
 
   deleteRistorante(codiceRistorante: string): Observable<any> {
     return this.http.delete(this.myAppUrlRistorante + this.deleteRestaurantByCodice + '/' + codiceRistorante);
+  }
+
+  confirmRestaurantEntering(codiceRistorante: string): Observable<any> {
+    return this.http.put(this.myAppUrlPortale + this.confirmRestaurant + '/' + codiceRistorante, null);
+  }
+
+  setRestaurantOff(codiceRistorante: string): Observable<any> {
+    return this.http.put(this.myAppUrlPortale + this.deactiveRestaurant + '/' + codiceRistorante, null);
   }
 
 }

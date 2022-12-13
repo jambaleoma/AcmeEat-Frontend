@@ -11,23 +11,33 @@ export class AuthenticationService {
 
   private myAppUrl = environment.myAppUrl +'/portaleAcmeEat';
   private loginUrl = '/loginDirettore';
-  private registerUrl = '/insertDirettore';
+  private logoutUrl = '/logoutDirettore';
+  private registerUrl = '/registraDirettore';
   private resetPswUrl = '/account/password';
+  private creaPortale = '/creaPortale';
 
   constructor(private http: HttpClient) {}
 
   // Get the status
-  login(user: Director): Observable<any> {
-    const body = user;
+  login(director: Director): Observable<any> {
+    const body = director;
     return this.http.post(this.myAppUrl + this.loginUrl, body);
   }
 
-  register(user: Director): Observable<any> {
-    const body = user;
+  register(director: Director): Observable<any> {
+    const body = director;
     return this.http.post(this.myAppUrl + this.registerUrl, body);
   }
 
   resetPassword(codiceDirettore: string): Observable<any> {
     return this.http.put(this.myAppUrl + this.resetPswUrl + '?codiceDirettore=' + codiceDirettore, null)
+  }
+
+  logout(): Observable<any> {
+    return this.http.get(this.myAppUrl + this.logoutUrl);
+  }
+
+  createPortal(initPortal: any): Observable<any> {
+    return this.http.post(this.myAppUrl + this.creaPortale, initPortal);
   }
 }

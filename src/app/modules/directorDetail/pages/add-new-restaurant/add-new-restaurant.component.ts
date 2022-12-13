@@ -37,7 +37,6 @@ export class AddNewRestaurantComponent implements OnInit{
   }
 
   addNewRestaurant() {
-    console.log(this.formNewRestaurant.value);
     this.newRestaurant.nome = this.formNewRestaurant.value.nome;
     this.newRestaurant.descrizione = this.formNewRestaurant.value.descrizione;
     this.newRestaurant.codiceCitta = this.formNewRestaurant.value.citta.codiceCitta;

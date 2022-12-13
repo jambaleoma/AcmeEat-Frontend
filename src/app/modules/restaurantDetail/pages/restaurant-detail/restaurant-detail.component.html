@@ -20,6 +20,7 @@
       <ng-template pTemplate="header">
         <tr>
           <th>Codice Ristorante</th>
+          <th>Stato</th>
           <th>Città</th>
           <th>Nome</th>
           <th>Descrizione</th>
@@ -28,6 +29,7 @@
       <ng-template pTemplate="body" let-ristorante>
         <tr>
           <td>{{ristorante.codiceRistorante}}</td>
+          <td><span [class]="'customer-badge status-' + ristorante.stato">{{ristorante.stato}}</span></td>
           <td>{{ristorante.codiceCitta | cittaByCodice}}</td>
           <td>{{ristorante.nome}}</td>
           <td>{{ristorante.descrizione}}</td>
@@ -45,29 +47,76 @@
 </div>
 
 <div style="padding-top: 2em;" *ngIf="currentMenu">
-    <h4>Dettaglio Menù</h4>
-    <div class="card">
-      <p-table [value]="listaProdottiMenu" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '50rem'}">
-        <ng-template pTemplate="caption">
-            Codice Menù: {{currentMenu.codiceMenu}}
-        </ng-template>
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Codice Prodotto</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-menuProdotto>
-          <tr>
-            <td>{{menuProdotto}}</td>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="emptymessage" let-columns>
-          <tr>
-            <td colspan="5">
-              Nessun Ristorante Disponibile
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
+  <h4>Dettaglio Menù</h4>
+  <div class="card">
+    <p-table [value]="listaProdottiMenu" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '50rem'}">
+      <ng-template pTemplate="caption">
+        Codice Menù: {{currentMenu.codiceMenu}}
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Codice Prodotto</th>
+          <th>nome</th>
+          <th>descrizione</th>
+          <th>prezzo</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-menuProdotto>
+        <tr>
+          <td>{{menuProdotto.codiceProdotto}}</td>
+          <td>{{menuProdotto.nome}}</td>
+          <td>{{menuProdotto.descrizione}}</td>
+          <td>{{menuProdotto.prezzo}} €</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage" let-columns>
+        <tr>
+          <td colspan="5">
+            Nessun Ristorante Disponibile
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<div style="padding-top: 2em;" *ngIf="currentMenu">
+  <h4>Specialità Ristorante</h4>
+  <div class="card">
+    <p-dropdown placeholder="Seleziona una Specialità" (onChange)="setSpecialtyToMenu()" [showClear]="true"
+      optionLabel="nome" [options]="listaProdottiMenu" [(ngModel)]="selectedSpecialty"></p-dropdown>
+  </div>
+</div>
+
+<div style="text-align: center; padding-top: 2em; display: flex; justify-content: center;" *ngIf="currentRestaurant && currentMenu && selectedSpecialty && currentRestaurant?.stato === 'bozza'">
+  <div style="border: 5px solid #3B82F6; padding: 2em;">
+    <h4>Conferma Inserimento Ristorante</h4>
+    <div class="row" style="justify-content: center; padding-top: 2em;">
+      <button type="button" label="Inserisci nuovo ristorante" (click)="activeRestaurant()" iconPos="right" pButton pRipple
+        icon="pi pi-plus-circle"></button>
     </div>
   </div>
+</div>
+
+<div style="text-align: center; padding-top: 2em; display: flex; justify-content: center;" *ngIf="currentRestaurant && currentMenu && selectedSpecialty && currentRestaurant?.stato === 'attivo'">
+  <div style="border: 5px solid #EF4444; padding: 2em;">
+    <h4>Disattivazione Ristorante</h4>
+    <div class="row" style="justify-content: center; padding-top: 2em;">
+      <button type="button" label="Disattiva ristorante" class="p-button-danger" (click)="deactiveRestaurant()" iconPos="right" pButton pRipple
+        icon="pi pi-power-off"></button>
+    </div>
+  </div>
+</div>
+
+<div style="text-align: center; padding-top: 2em; display: flex; justify-content: center;" *ngIf="currentRestaurant && currentMenu && selectedSpecialty && currentRestaurant?.stato === 'disattivato'">
+  <div style="border: 5px solid #22C55E; padding: 2em;">
+    <h4>Riattivazione Ristorante</h4>
+    <div class="row" style="justify-content: center; padding-top: 2em;">
+      <button type="button" label="Riattiva ristorante" class="p-button-success" (click)="activeRestaurant()" iconPos="right" pButton pRipple
+        icon="pi pi-power-off"></button>
+    </div>
+  </div>
+</div>
+
+<p-toast></p-toast>
+<p-confirmDialog header="Confirmation" icon="pi pi-trash"></p-confirmDialog>

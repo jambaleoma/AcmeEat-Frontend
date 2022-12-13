@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Director } from 'src/app/shared/models/director.model';
 import { faRightFromBracket, faUser } from '@fortawesome/free-solid-svg-icons';
+import { AuthenticationService } from 'src/app/core/service/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,10 @@ export class HomeComponent implements OnInit{
   faUser = faUser;
   faExit = faRightFromBracket;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+    ) { }
 
   ngOnInit() {
     this.director = JSON.parse(sessionStorage.getItem('director'));
@@ -22,7 +26,12 @@ export class HomeComponent implements OnInit{
 
   goToLogOut() {
     sessionStorage.removeItem('director');
-    this.router.navigateByUrl('/welcome');
+    sessionStorage.removeItem('currentRestaurantCode');
+    this.authenticationService.logout().subscribe(resp => {
+      if (resp) {
+        this.router.navigateByUrl('/welcome');  
+      }
+    });
   }
 
   goToDirectorDetails() {

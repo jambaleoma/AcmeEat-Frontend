@@ -11,10 +11,11 @@
 
     <!-- Login Form -->
     <form #myform = "ngForm" (ngSubmit)="onSubmit(myform)">
-      <input type="text" class="fadeIn second" name="username" placeholder="Username" ngModel>
-      <input type="text" class="fadeIn second" name="email" placeholder="Email" ngModel>
-      <input type="text" class="fadeIn third" name="password" placeholder="Password" ngModel>
-      <input type="text" class="fadeIn third" name="password2" placeholder="Conferma Password" ngModel>
+      <input type="text" class="fadeIn second" name="codiceDirettore" placeholder="Codice Direttore" ngModel>
+      <input type="text" class="fadeIn second" name="nome" placeholder="Nome" ngModel>
+      <input type="text" class="fadeIn second" name="cognome" placeholder="Cognome" ngModel>
+      <input type="password" class="fadeIn third" name="psw" placeholder="Password" ngModel>
+      <input type="password" class="fadeIn third" name="password2" placeholder="Conferma Password" ngModel>
       <input type="submit" class="fadeIn fourth" value="Registrami">
     </form>
 
@@ -25,3 +26,4 @@
 
   </div>
 </div>
+<p-toast></p-toast>

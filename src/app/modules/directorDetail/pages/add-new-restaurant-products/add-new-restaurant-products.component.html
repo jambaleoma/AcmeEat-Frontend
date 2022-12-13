@@ -34,8 +34,9 @@
             </form>
         </ng-container>
         <ng-template pTemplate="footer">
-            <p-button [disabled]="checkValid()" label="Salva" (click)="addNewRestaurantProduct()" icon="pi pi-check"></p-button>
-            <p-button label="Annulla" (click)="resetNewRestaurantForm()" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+            <p-button label="Aggiungi" (click)="addNewRestaurantProduct()" styleClass="p-button-success" [disabled]="checkValid()" icon="pi pi-plus"></p-button>
+            <p-button label="Annulla" (click)="resetNewRestaurantForm()" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}" icon="pi pi-times"></p-button>
+            <p-button label="Termina Inserimento" (click)="menuComplete()" [style]="{'margin-left': '.5em'}" icon="pi pi-check"></p-button>
         </ng-template>
     </p-card>
 </div>
@@ -46,3 +47,4 @@
       <p-button icon="pi pi-check" (click)="resetform()" label="Ok" styleClass="p-button-text"></p-button>
   </ng-template>
 </p-dialog>
+<p-confirmDialog icon="pi pi-trash"></p-confirmDialog>

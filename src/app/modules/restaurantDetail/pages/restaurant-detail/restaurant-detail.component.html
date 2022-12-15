@@ -88,32 +88,35 @@
   </div>
 </div>
 
-<div style="text-align: center; padding-top: 2em; display: flex; justify-content: center;" *ngIf="currentRestaurant && currentMenu && selectedSpecialty && currentRestaurant?.stato === 'bozza'">
+<div style="text-align: center; padding-top: 2em; display: flex; justify-content: center;"
+  *ngIf="currentRestaurant && currentMenu && selectedSpecialty && currentRestaurant?.stato === 'bozza'">
   <div style="border: 5px solid #3B82F6; padding: 2em;">
     <h4>Conferma Inserimento Ristorante</h4>
     <div class="row" style="justify-content: center; padding-top: 2em;">
-      <button type="button" label="Inserisci nuovo ristorante" (click)="activeRestaurant()" iconPos="right" pButton pRipple
-        icon="pi pi-plus-circle"></button>
+      <button type="button" label="Inserisci nuovo ristorante" (click)="activeRestaurant()" iconPos="right" pButton
+        pRipple icon="pi pi-plus-circle"></button>
     </div>
   </div>
 </div>
 
-<div style="text-align: center; padding-top: 2em; display: flex; justify-content: center;" *ngIf="currentRestaurant && currentMenu && selectedSpecialty && currentRestaurant?.stato === 'attivo'">
+<div style="text-align: center; padding-top: 2em; display: flex; justify-content: center;"
+  *ngIf="currentRestaurant && currentMenu && selectedSpecialty && currentRestaurant?.stato === 'attivo'">
   <div style="border: 5px solid #EF4444; padding: 2em;">
     <h4>Disattivazione Ristorante</h4>
     <div class="row" style="justify-content: center; padding-top: 2em;">
-      <button type="button" label="Disattiva ristorante" class="p-button-danger" (click)="deactiveRestaurant()" iconPos="right" pButton pRipple
-        icon="pi pi-power-off"></button>
+      <button type="button" label="Disattiva ristorante" class="p-button-danger" (click)="deactiveRestaurant()"
+        iconPos="right" pButton pRipple icon="pi pi-power-off"></button>
     </div>
   </div>
 </div>
 
-<div style="text-align: center; padding-top: 2em; display: flex; justify-content: center;" *ngIf="currentRestaurant && currentMenu && selectedSpecialty && currentRestaurant?.stato === 'disattivato'">
+<div style="text-align: center; padding-top: 2em; display: flex; justify-content: center;"
+  *ngIf="currentRestaurant && currentMenu && selectedSpecialty && currentRestaurant?.stato === 'disattivato'">
   <div style="border: 5px solid #22C55E; padding: 2em;">
     <h4>Riattivazione Ristorante</h4>
     <div class="row" style="justify-content: center; padding-top: 2em;">
-      <button type="button" label="Riattiva ristorante" class="p-button-success" (click)="activeRestaurant()" iconPos="right" pButton pRipple
-        icon="pi pi-power-off"></button>
+      <button type="button" label="Riattiva ristorante" class="p-button-success" (click)="activeRestaurant()"
+        iconPos="right" pButton pRipple icon="pi pi-power-off"></button>
     </div>
   </div>
 </div>

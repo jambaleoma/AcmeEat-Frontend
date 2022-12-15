@@ -1,29 +1,31 @@
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
-    <h2 class="inactive underlineHover" (click)="goToLogin()"> Accedi </h2>
-    <h2 class="active"> Registrati </h2>
+<div class="backgroundImage">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="inactive underlineHover" (click)="goToLogin()"> Accedi </h2>
+      <h2 class="active"> Registrati </h2>
 
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <img src="./../../../../../assets/img/userIcon.png" id="icon" alt="User Icon" style="width: 200px;"/>
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="./../../../../../assets/img/userIcon.png" id="icon" alt="User Icon" style="width: 200px;" />
+      </div>
+
+      <!-- Login Form -->
+      <form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+        <input type="text" class="fadeIn second" name="codiceDirettore" placeholder="Codice Direttore" ngModel>
+        <input type="text" class="fadeIn second" name="nome" placeholder="Nome" ngModel>
+        <input type="text" class="fadeIn second" name="cognome" placeholder="Cognome" ngModel>
+        <input type="password" class="fadeIn third" name="psw" placeholder="Password" ngModel>
+        <input type="password" class="fadeIn third" name="password2" placeholder="Conferma Password" ngModel>
+        <input type="submit" class="fadeIn fourth" value="Registrami">
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" (click)="goToHelp()">Password dimenticata?</a>
+      </div>
+
     </div>
-
-    <!-- Login Form -->
-    <form #myform = "ngForm" (ngSubmit)="onSubmit(myform)">
-      <input type="text" class="fadeIn second" name="codiceDirettore" placeholder="Codice Direttore" ngModel>
-      <input type="text" class="fadeIn second" name="nome" placeholder="Nome" ngModel>
-      <input type="text" class="fadeIn second" name="cognome" placeholder="Cognome" ngModel>
-      <input type="password" class="fadeIn third" name="psw" placeholder="Password" ngModel>
-      <input type="password" class="fadeIn third" name="password2" placeholder="Conferma Password" ngModel>
-      <input type="submit" class="fadeIn fourth" value="Registrami">
-    </form>
-
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" (click)="goToHelp()">Password dimenticata?</a>
-    </div>
-
   </div>
+  <p-toast></p-toast>
 </div>
-<p-toast></p-toast>

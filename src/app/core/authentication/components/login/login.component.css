@@ -285,3 +285,10 @@ input[type=password]:placeholder {
 * {
   box-sizing: border-box;
 }
+
+.backgroundImage {
+  background-image: url('./../../../../../assets/img/background-blur.jpg');
+  background-repeat: no-repeat;
+  background-size: auto;
+  min-height: 61em
+}

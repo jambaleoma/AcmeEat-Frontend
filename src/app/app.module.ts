@@ -21,9 +21,11 @@ import { MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmationService } from 'primeng/api';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { CittaByCodicePipe } from './shared/pipes/citta-by-codice.pipe';
 import { AddNewRestaurantComponent } from './modules/directorDetail/pages/add-new-restaurant/add-new-restaurant.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddNewRestaurantProductsComponent } from './modules/directorDetail/pages/add-new-restaurant-products/add-new-restaurant-products.component';
 
 
@@ -53,7 +55,10 @@ import { AddNewRestaurantProductsComponent } from './modules/directorDetail/page
     DropdownModule,
     ToastModule,
     ConfirmDialogModule,
-    DialogModule
+    DialogModule,
+    InputTextModule,
+    ReactiveFormsModule,
+    InputNumberModule
   ],
   providers: [RestaurantService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],

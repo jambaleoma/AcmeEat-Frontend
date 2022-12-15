@@ -1,26 +1,29 @@
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
-    <h2 class="active"> Accedi </h2>
-    <h2 class="inactive underlineHover" (click)="goToRegister()"> Registrati </h2>
+<div class="backgroundImage">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="active"> Accedi </h2>
+      <h2 class="inactive underlineHover" (click)="goToRegister()"> Registrati </h2>
 
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <img src="./../../../../../assets/img/acme-eat-logo.png" id="logoAcmeEat" alt="logoAcmeEat" style="width: 200px;">
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="./../../../../../assets/img/acme-eat-logo.png" id="logoAcmeEat" alt="logoAcmeEat"
+          style="width: 200px;">
+      </div>
+
+      <!-- Login Form -->
+      <form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+        <input type="text" class="fadeIn second" name="codiceDirettore" placeholder="Codice Direttore" ngModel>
+        <input type="password" class="fadeIn third" name="psw" placeholder="Password" ngModel>
+        <input type="submit" class="fadeIn fourth" value="Accedi">
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" (click)="goToHelp()">Password dimenticata?</a>
+      </div>
+
     </div>
-
-    <!-- Login Form -->
-    <form #myform = "ngForm" (ngSubmit)="onSubmit(myform)">
-      <input type="text" class="fadeIn second" name="codiceDirettore" placeholder="Codice Direttore" ngModel>
-      <input type="password" class="fadeIn third" name="psw" placeholder="Password" ngModel>
-      <input type="submit" class="fadeIn fourth" value="Accedi">
-    </form>
-
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" (click)="goToHelp()">Password dimenticata?</a>
-    </div>
-
   </div>
+  <p-toast></p-toast>
 </div>
-<p-toast></p-toast>

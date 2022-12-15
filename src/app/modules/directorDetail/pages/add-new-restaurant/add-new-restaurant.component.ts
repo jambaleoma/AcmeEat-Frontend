@@ -1,22 +1,22 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Restaurant } from '../../../../shared/models/Restaurant.model';
 import { CittaService } from '../../../../core/service/citta.service';
 import { City } from '../../../../shared/models/City.model';
 import { NgForm } from '@angular/forms';
 import { RestaurantService } from '../../../restaurantDetail/services/restaurant.service';
-import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
-import { faL, faRightFromBracket, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faRightFromBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-add-new-restaurant',
   templateUrl: './add-new-restaurant.component.html',
-  styleUrls: ['./add-new-restaurant.component.scss']
+  styleUrls: ['./add-new-restaurant.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AddNewRestaurantComponent implements OnInit{
   
   public newRestaurant: Restaurant = {};
-  public listacitta: City[];
+  public listaCitta: City[];
   public isformNewRestaurantValid = false;
   public showRestaurantAddedModal = false;
   public faUser = faUser;
@@ -31,15 +31,15 @@ export class AddNewRestaurantComponent implements OnInit{
   ) {}
   
   ngOnInit() {
-    this.cittaService.getAllcitta().subscribe((resp: City[]) => {
-      this.listacitta = resp;
+    this.cittaService.getAllcitta().subscribe(respAllCities => {
+      this.listaCitta = respAllCities.listacitta;
     });
   }
 
   addNewRestaurant() {
     this.newRestaurant.nome = this.formNewRestaurant.value.nome;
     this.newRestaurant.descrizione = this.formNewRestaurant.value.descrizione;
-    this.newRestaurant.codiceCitta = this.formNewRestaurant.value.citta.codiceCitta;
+    this.newRestaurant.codiceCitta = this.formNewRestaurant.value.citta.codice;
     this.restaurantService.insertRistorante(this.newRestaurant).subscribe(resp => {
       if (resp) {
         this.showRestaurantAddedModal = true;

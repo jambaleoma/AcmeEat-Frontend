@@ -1,17 +1,12 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div id="page-content" style="text-align:center">
-  <h1 style="padding-top: 1em;">
-    🎉 Benvenuto su {{ title }} ! 🎉
-  </h1>
-  <div style="padding-top: 1em;">
-    <img src="./../../../../../assets/img/acme-eat-logo.png" alt="logoAcmeEat" style="width: 200px;">
-  </div>
-  <div>
-    <h4 style="padding-top: 1em;">
-      Entra nel portale!
-    </h4>
-    <div style="padding-top: 2em;">
-      <p-button (click)="goToLogin()" icon="pi pi-sign-in" label="Entra" iconPos="right"></p-button>
-    </div>
-  </div>
+<div class="backgroundImage">
+  <div style="display: flex; justify-content: center; text-align: center; padding-top: 5%;">
+    <p-card header="Benvenuto su {{ title }}" subheader="Gestisci i tuoi ristoranti" [style]="{width: '400px'}" styleClass="p-card-shadow">
+      <ng-template pTemplate="header">
+        <img src="./../../../../../assets/img/acme-eat-logo.png" alt="logoAcmeEat" style="width: 200px; padding-top: 1em;">
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <p-button (click)="goToLogin()" label="Entra nel portale"></p-button>
+      </ng-template>
+    </p-card>
+  </div>  
 </div>

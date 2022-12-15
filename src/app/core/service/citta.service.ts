@@ -1,18 +1,16 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { Observable, of } from 'rxjs';
+import listacitta from './../../../assets/JSON/elencoCitta.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CittaService {
 
-  private myAppUrl = environment.myAppUrl + '/citta';
-
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   getAllcitta(): Observable<any> {
-    return this.http.get(this.myAppUrl + '/all');
+    const data$ = of(listacitta);
+    return data$;
   }
 }

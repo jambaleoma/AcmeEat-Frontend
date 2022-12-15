@@ -1,5 +1,5 @@
 import { Portal } from './../../../../shared/models/Portal.model';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +15,8 @@ import { Response } from 'src/app/shared/models/Response.model';
 @Component({
   selector: 'app-add-new-restaurant-products',
   templateUrl: './add-new-restaurant-products.component.html',
-  styleUrls: ['./add-new-restaurant-products.component.scss']
+  styleUrls: ['./add-new-restaurant-products.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AddNewRestaurantProductsComponent {
 

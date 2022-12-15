@@ -8,9 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ButtonModule, ToastModule],
+  imports: [CommonModule, FormsModule, ButtonModule, ToastModule, CardModule],
   declarations: [LoginComponent, RegisterComponent, HelpComponent, WelcomeComponent],
   exports: [LoginComponent, RegisterComponent, HelpComponent, WelcomeComponent],
   providers: [MessageService]

@@ -1,50 +1,75 @@
 <div class="grid">
-    <div class="row">
-      <div class="col">
-        <img src="./../../../../../assets/img/acme-eat-logo.png" id="logoAcmeEat" alt="logoAcmeEat" style="width: 50px;">
-      </div>
-      <div class="col" style="text-align: right;">
-        <button (click)="goToDirectorDetails()" type="button" class="btn btn-elegant">
-          <fa-icon [icon]="faUser"></fa-icon> Direttore
-        </button>
-        <button (click)="goToLogOut()" type="button" class="btn btn-secondary">
-          Logout <fa-icon [icon]="faExit"></fa-icon>
-        </button>
-      </div>
+  <div class="row">
+    <div class="col">
+      <img src="./../../../../../assets/img/acme-eat-logo.png" id="logoAcmeEat" alt="logoAcmeEat" style="width: 50px;">
+    </div>
+    <div class="col" style="text-align: right;">
+      <button (click)="goToDirectorDetails()" type="button" class="btn btn-elegant">
+        <fa-icon [icon]="faUser"></fa-icon> Direttore
+      </button>
+      <button (click)="goToLogOut()" type="button" class="btn btn-secondary">
+        Logout <fa-icon [icon]="faExit"></fa-icon>
+      </button>
     </div>
   </div>
+</div>
 <div style="display: flex; justify-content: center;">
-    <p-card header="Inserimento nuovo Menu" subheader="Dettagli Prodotto" [style]="{width: '80%'}" styleClass="p-card-shadow">
-        <ng-template pTemplate="header">
-            <img alt="Card" src="./../../../../../assets/img/newRestaurantProductCard.png">
-        </ng-template>
-        <ng-container>
-            <form #formNewRestaurantProduct="ngForm">
-                <h5>Nome</h5>
-                <input required style="margin-bottom: 2em;" id="float-input" type="text" pInputText name="nome" ngModel> 
-                <h5>Descrizione</h5>
-                <textarea required style="margin-bottom: 2em;" id="float-input" rows="5" cols="30" name="descrizione" pInputTextarea ngModel></textarea>
-                <h5>Prezzo</h5>
-                <div class="col-12 md:col-4">
-                    <div class="p-inputgroup">
-                        <span class="p-inputgroup-addon">€</span>
-                        <input type="number" pInputText placeholder="Prezzo" name="prezzo" ngModel>   
-                    </div>
-                </div>
-            </form>
-        </ng-container>
-        <ng-template pTemplate="footer">
-            <p-button label="Aggiungi" (click)="addNewRestaurantProduct()" styleClass="p-button-success" [disabled]="checkValid()" icon="pi pi-plus"></p-button>
-            <p-button label="Annulla" (click)="resetNewRestaurantForm()" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}" icon="pi pi-times"></p-button>
-            <p-button label="Termina Inserimento" (click)="menuComplete()" [style]="{'margin-left': '.5em'}" icon="pi pi-check"></p-button>
-        </ng-template>
-    </p-card>
+  <p-card header="Menu" subheader="Inserisci il prodotto" styleClass="p-card-shadow">
+    <ng-template pTemplate="header">
+      <img alt="Card" src="./../../../../../assets/img/newRestaurantProductCard.png" style="width: 30%;">
+    </ng-template>
+    <ng-container>
+      <form #formNewRestaurantProduct="ngForm">
+        <div class="grid">
+          <div class="row" style="padding-bottom: 2em;">
+            <div class="col">
+              <label for="nome" class="block">Nome prodotto</label>
+              <input required style="display: block;" type="text" class="p-inputtext-lg" pInputText name="nome" ngModel>
+              <small
+                *ngIf="formNewRestaurantProduct.form.controls.nome?.errors && formNewRestaurantProduct.form.controls.nome?.dirty"
+                class="p-error block">Inserire un nome</small>
+            </div>
+            <div class="col">
+              <label for="desc" class="block">Descrizione prodotto</label>
+              <input required style="display: block;" type="text" class="p-inputtext-lg" pInputText name="descrizione"
+                ngModel>
+              <small
+                *ngIf="formNewRestaurantProduct.form.controls.descrizione?.errors && formNewRestaurantProduct.form.controls.descrizione?.dirty"
+                class="p-error block">Inserire una descrizione</small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="desc" class="block">Prezzo</label>
+              <div>
+                <p-inputNumber [showButtons]="true" inputId="stacked" mode="currency" name="prezzo" currency="EUR"
+                  ngModel></p-inputNumber>
+              </div>
+              <small
+                *ngIf="formNewRestaurantProduct.form.controls.prezzo?.errors && formNewRestaurantProduct.form.controls.prezzo?.dirty"
+                class="p-error block">Inserire un prezzo</small>
+            </div>
+          </div>
+        </div>
+      </form>
+    </ng-container>
+    <ng-template pTemplate="footer">
+      <p-button label="Aggiungi" (click)="addNewRestaurantProduct()" styleClass="p-button-success"
+        [disabled]="checkValid()" icon="pi pi-plus"></p-button>
+      <p-button label="Annulla" (click)="resetNewRestaurantForm()" styleClass="p-button-secondary"
+        [style]="{'margin-left': '.5em'}" icon="pi pi-times"></p-button>
+    </ng-template>
+  </p-card>
+</div>
+<div style="text-align: center; padding: 2em;">
+  <p-button label="Termina Inserimento" (click)="menuComplete()" [style]="{'margin-left': '.5em'}" icon="pi pi-check">
+  </p-button>
 </div>
 <p-toast></p-toast>
 <p-dialog header="Successo" [(visible)]="showRestaurantAddedModal" [style]="{width: '50vw'}">
   <p>Inserimento nuovo Prodotto del Menu avvenuto con successo</p>
   <ng-template pTemplate="footer">
-      <p-button icon="pi pi-check" (click)="resetform()" label="Ok" styleClass="p-button-text"></p-button>
+    <p-button icon="pi pi-check" (click)="resetform()" label="Ok" styleClass="p-button-text"></p-button>
   </ng-template>
 </p-dialog>
 <p-confirmDialog icon="pi pi-trash"></p-confirmDialog>

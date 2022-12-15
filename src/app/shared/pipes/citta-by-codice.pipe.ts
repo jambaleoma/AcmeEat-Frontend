@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import citta from './../../../assets/JSON/citta.json';
+import listacitta from './../../../assets/JSON/elencoCitta.json';
 
 @Pipe({
   name: 'cittaByCodice'
@@ -7,7 +7,7 @@ import citta from './../../../assets/JSON/citta.json';
 export class CittaByCodicePipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): unknown {
-    return citta.listaCitta.find(c => c.codice === value).nome;
+    return listacitta.listacitta.find(c => c.codice === value).nome;
   }
 
 }
